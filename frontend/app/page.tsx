@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TrendChart from "./components/TrendChart";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -55,19 +56,23 @@ export default function Home() {
           </div>
 
           {results.length > 0 && (
-            <div className="mt-8 bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Results</h2>
-              <div className="space-y-3">
-                {results.map((item, idx) => (
-                  <div key={idx} className="p-4 border rounded hover:bg-gray-50">
-                    <div className="flex justify-between">
-                      <span className="font-medium">{item.keyword}</span>
-                      <span className="text-blue-600">Heat: {item.avg_heat}</span>
+            <>
+              <TrendChart data={results} />
+              
+              <div className="mt-8 bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-4">Results</h2>
+                <div className="space-y-3">
+                  {results.map((item, idx) => (
+                    <div key={idx} className="p-4 border rounded hover:bg-gray-50">
+                      <div className="flex justify-between">
+                        <span className="font-medium">{item.keyword}</span>
+                        <span className="text-blue-600">Heat: {item.avg_heat}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>
