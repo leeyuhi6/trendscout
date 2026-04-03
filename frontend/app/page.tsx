@@ -3,9 +3,14 @@
 import { useState } from "react";
 import TrendChart from "./components/TrendChart";
 
+interface KeywordItem {
+  keyword: string;
+  avg_heat: number;
+}
+
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<KeywordItem[]>([]);
   const [loading, setLoading] = useState(false);
 
   const searchTrends = async () => {
