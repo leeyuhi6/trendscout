@@ -16,7 +16,7 @@ export default function Home() {
   const searchTrends = async () => {
     setLoading(true);
     try {
-      const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://trendscout-production-5093.up.railway.app";
+      const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://api.trendscout.dev";
       const url = query 
         ? `${apiBase}/api/keywords/search?q=${query}&limit=20`
         : `${apiBase}/api/keywords/trending?limit=20`;
