@@ -16,9 +16,10 @@ export default function Home() {
   const searchTrends = async () => {
     setLoading(true);
     try {
+      const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://trendscout-production-5093.up.railway.app";
       const url = query 
-        ? `http://localhost:8000/api/keywords/search?q=${query}&limit=20`
-        : `http://localhost:8000/api/keywords/trending?limit=20`;
+        ? `${apiBase}/api/keywords/search?q=${query}&limit=20`
+        : `${apiBase}/api/keywords/trending?limit=20`;
       
       const res = await fetch(url);
       const data = await res.json();
