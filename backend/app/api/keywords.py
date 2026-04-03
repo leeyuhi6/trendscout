@@ -1,11 +1,13 @@
 from fastapi import APIRouter, Query
 from typing import List, Optional
 from app.services.trends import TrendsDataService
+import os
 
 router = APIRouter(prefix="/api/keywords", tags=["keywords"])
 
-# 初始化数据服务
-DATA_PATH = "/root/.openclaw/workspace/projects/google-trends/data/test_100_results.jsonl"
+# 相对路径，兼容本地和 Railway 部署
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DATA_PATH = os.path.join(BASE_DIR, "data", "keywords.jsonl")
 trends_service = TrendsDataService(DATA_PATH)
 
 @router.get("/search")
