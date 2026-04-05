@@ -24,8 +24,7 @@ function EarlyAccessForm() {
 
     try {
       // 提交到我们自己的 API，后端转发到 EmailOctopus 或直接存储
-      const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://api.trendscout.dev";
-      const res = await fetch(`${apiBase}/api/subscribe`, {
+      const res = await fetch(`/api/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
